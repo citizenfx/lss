@@ -1767,6 +1767,10 @@ struct kernel_statfs {
 #endif
 
 
+#define __NR_pread __NR_pread64
+#define __NR_pwrite __NR_pwrite64
+
+
 /* After forking, we must make sure to only call system calls.               */
 #if defined(__BOUNDED_POINTERS__)
   #error "Need to port invocations of syscalls for bounded ptrs"
@@ -3363,8 +3367,8 @@ struct kernel_statfs {
   LSS_INLINE _syscall4(int,     futex,           int*,        a,
                        int,            o, int,    v,
                       struct kernel_timespec*, t)
-  LSS_INLINE _syscall3(int,     getdents,        int,         f,
-                       struct kernel_dirent*, d, int,    c)
+  //LSS_INLINE _syscall3(int,     getdents,        int,         f,
+  //                     struct kernel_dirent*, d, int,    c)
   LSS_INLINE _syscall3(int,     getdents64,      int,         f,
                       struct kernel_dirent64*, d, int,    c)
   LSS_INLINE _syscall0(gid_t,   getegid)
